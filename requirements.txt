@@ -1,0 +1,8 @@
+Django==4.2
+djangorestframework
+drf-yasg[validation]
+python-decouple
+djangorestframework-simplejwt
+django-redis
+redis
+ruff
