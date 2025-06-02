@@ -1,8 +1,12 @@
 Django==4.2
 djangorestframework
-drf-yasg[validation]
+drf-spectacular
 python-decouple
 djangorestframework-simplejwt
 django-redis
 redis
 ruff
+requests
+django-ratelimit
+django-recaptcha
+

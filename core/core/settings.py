@@ -9,10 +9,14 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+from __future__ import annotations
 
-from pathlib import Path
-from decouple import config 
 from datetime import timedelta
+from pathlib import Path
+
+from decouple import config
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,15 +41,15 @@ ALLOWED_HOSTS = config(
 
 APPS = [
     "accounts",
-    "cart",
     "orders",
-    "payments",
     "products"
 ]
 
 THIRD_PARTY_MODULES = [
     "rest_framework",
     "rest_framework_simplejwt",
+    'rest_framework_simplejwt.token_blacklist',
+    "drf_spectacular",
 ]
 
 INSTALLED_APPS = [
@@ -55,7 +59,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    *APPS
+    *APPS,
+    *THIRD_PARTY_MODULES
 ]
 
 MIDDLEWARE = [
@@ -167,6 +172,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 # jwt configs
@@ -185,3 +191,25 @@ SIMPLE_JWT = {
     "USER_ID_FIELD": "id",
     "USER_ID_CLAIM": "sub",
 }
+
+# Document configs
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Bahoosh360 API",
+    "DESCRIPTION": "مستندات کامل پروژه Bahoosh360.ir",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SCHEMA_PATH_PREFIX": "/api/v1",
+    "COMPONENT_SPLIT_REQUEST": True,
+    "POSTPROCESSING_HOOKS": [],
+    "PREPROCESSING_HOOKS": [],
+    "ENUM_NAME_OVERRIDES": {},
+}
+
+# ZarinPal Configs
+ZARINPAL = {
+    "MERCHANT_ID" : config("MERCHANT_ID"),
+    "SANDBOX" : config("SANDBOX")
+}
+
+# Ratelimit configs
+RATELIMIT_CACHE_BACKEND = 'default'

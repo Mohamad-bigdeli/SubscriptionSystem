@@ -6,44 +6,47 @@ attrs==25.3.0
     # via
     #   jsonschema
     #   referencing
+certifi==2025.4.26
+    # via requests
+charset-normalizer==3.4.2
+    # via requests
 django==4.2
     # via
     #   -r requirements.txt
+    #   django-recaptcha
     #   django-redis
     #   djangorestframework
     #   djangorestframework-simplejwt
-    #   drf-yasg
+    #   drf-spectacular
+django-ratelimit==4.1.0
+    # via -r requirements.txt
+django-recaptcha==4.1.0
+    # via -r requirements.txt
 django-redis==5.4.0
     # via -r requirements.txt
 djangorestframework==3.16.0
     # via
     #   -r requirements.txt
     #   djangorestframework-simplejwt
-    #   drf-yasg
+    #   drf-spectacular
 djangorestframework-simplejwt==5.5.0
     # via -r requirements.txt
-drf-yasg==1.21.10
+drf-spectacular==0.28.0
     # via -r requirements.txt
-importlib-resources==6.5.2
-    # via swagger-spec-validator
+idna==3.10
+    # via requests
 inflection==0.5.1
-    # via drf-yasg
+    # via drf-spectacular
 jsonschema==4.23.0
-    # via swagger-spec-validator
+    # via drf-spectacular
 jsonschema-specifications==2025.4.1
     # via jsonschema
-packaging==25.0
-    # via drf-yasg
 pyjwt==2.9.0
     # via djangorestframework-simplejwt
 python-decouple==3.8
     # via -r requirements.txt
-pytz==2025.2
-    # via drf-yasg
 pyyaml==6.0.2
-    # via
-    #   drf-yasg
-    #   swagger-spec-validator
+    # via drf-spectacular
 redis==6.1.0
     # via
     #   -r requirements.txt
@@ -52,6 +55,8 @@ referencing==0.36.2
     # via
     #   jsonschema
     #   jsonschema-specifications
+requests==2.32.3
+    # via -r requirements.txt
 rpds-py==0.25.1
     # via
     #   jsonschema
@@ -60,11 +65,9 @@ ruff==0.11.11
     # via -r requirements.txt
 sqlparse==0.5.3
     # via django
-swagger-spec-validator==3.0.4
-    # via drf-yasg
 typing-extensions==4.13.2
-    # via
-    #   referencing
-    #   swagger-spec-validator
+    # via referencing
 uritemplate==4.1.1
-    # via drf-yasg
+    # via drf-spectacular
+urllib3==2.4.0
+    # via requests

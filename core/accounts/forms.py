@@ -1,7 +1,10 @@
+from __future__ import annotations
+
 from django import forms
-from .models import User
-from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.core.exceptions import ValidationError
+
+from .models import User
 
 
 class UserCreationForm(forms.ModelForm):
@@ -60,9 +63,8 @@ class UserChangeForm(forms.ModelForm):
                 .exists()
             ):
                 raise forms.ValidationError("Phone already exist.")
-        else:
-            if User.objects.filter(phone=phone).exists():
-                raise forms.ValidationError("Phone already exist.")
+        elif User.objects.filter(phone=phone).exists():
+            raise forms.ValidationError("Phone already exist.")
         if not phone.isdigit():
             raise forms.ValidationError("Invalid phone number.")
         if not phone.startswith("09"):

@@ -1,7 +1,10 @@
+from __future__ import annotations
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User, Profile
-from .forms import UserCreationForm, UserChangeForm
+
+from .forms import UserChangeForm, UserCreationForm
+from .models import Profile, User
 
 
 class CustomUserAdmin(UserAdmin):
